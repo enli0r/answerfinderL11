@@ -1,4 +1,4 @@
-<div id="post-{{ $post->id }}" class="post-container w-full rounded-xl bg-white mb-6 p-5 flex gap-5 hover:shadow-card hover:cursor-pointer lg:flex-col lg:gap-3
+<div id="post-{{ $post->id }}" class="post-container w-full rounded-xl bg-white mb-6 p-5 flex gap-5 hover:shadow-card hover:cursor-pointer lg:flex-col lg:gap-3 border border-solid border-slate-200
     
     {{-- @auth
         @php
@@ -15,7 +15,7 @@
 
     <div class="flex gap-3 justify-start shrink-0 lg:items-top">
             <div class="w-14 shrink-0">
-                <img src="https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg" alt=""
+                <img src="https://t4.ftcdn.net/jpg/06/10/19/43/360_F_610194339_3CtGOkv4wIiAyybcib4IrFX0nnc83Bv6.jpg" alt=""
                 class="block rounded-xl h-14 full">
                 
                 {{-- @auth
@@ -43,12 +43,13 @@
         <div class="flex justify-between items-center relative">
             <div class="flex gap-2 text-xs items-center w-full text-gray-400 font-semibold">
                 <div class="">
-                    <p class="text-sm text-gray-900">{{ $post->user->name }}</p>
+                    <p class="text-sm text-blue-500">{{ $post->user->name }}</p>
                 </div>
                 <p class="">•</p>
                 <p class="hover:cursor-text">{{ $post->created_at->diffForHumans() }}</p>
                 <p class="">•</p>
-                {{-- <p class="text-gray-900 hover:cursor-text w-20">{{ $post->comments->count() }} comments</p> --}}
+                {{-- {{ $post->comments->count() }} --}}
+                <p class="text-gray-900 hover:cursor-text w-20">5 comments</p>
             </div>
         </div>
     </div>

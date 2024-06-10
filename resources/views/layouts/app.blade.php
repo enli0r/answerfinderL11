@@ -14,7 +14,7 @@
 
 
         {{-- jQuery --}}
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
 
         {{-- Icons --}}
         <script src="https://kit.fontawesome.com/769c20f8b9.js" crossorigin="anonymous"></script>
@@ -24,12 +24,12 @@
         @livewireStyles
     </head>
     
-    <body>
+    <body class="">
 
 
-        {{-- <header class="container max-w-main mx-auto mb-5 mt-3 lg:px-5">
+        <header class="container max-w-main mx-auto mb-5 mt-3 lg:px-5">
             <x-navbar />
-        </header> --}}
+        </header>
 
         <main class="container mx-auto max-w-main">  
 
