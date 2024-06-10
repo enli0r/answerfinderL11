@@ -8,7 +8,6 @@
     "
 >
 
-
     {{-- post your question button --}}
     <button 
         @click="showCreatePost = true"
@@ -22,7 +21,7 @@
 
 
     {{-- Create post for pc --}}
-    <div class="rounded-2xl bg-white p-6 self-baseline hover:shadow-card lg:hidden hover:cursor-pointer border border-slate-200">
+    <div class="rounded-2xl bg-white p-6 self-baseline lg:hidden border border-slate-200">
         <div class="text-center">
             <h4 class="text-lg font-bold mb-3">Ask a question</h4>
             <p class="text-xs mb-8">Find the answer you are looking for!</p>

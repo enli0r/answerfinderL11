@@ -2,30 +2,57 @@
     x-data="{dropdown:false}"
     class="navbar flex items-center justify-between relative pl-5">
 
+    
+      
     <img src="../img/a5.png" alt="" class="w-[240px] mb-3">
+
+    {{-- <div class="flex justify-between items-center space-x-3 border-2 border-blue-400 rounded-xl px-2 py-2">
+        <img src="../img/cv.png" class="w-5 h-5" alt="">
+
+        <img src="../img/linkedin.png" class="w-5 h-5" alt="">
+
+        <img src="../img/github-mark.png" class="w-5 h-5" alt="">
+
+    </div> --}}
+
     <div class="flex items-center justify-between">
+        
+
         @if (Route::has('login'))
             <div class="px-6 py-4">
                 
             </div>
         @endif
 
-        <div class="navigation space-x-3 mr-5">
-            <a href="#" class="font-semibold text-gray-800">All posts</a>
+        <div class="navigation space-x-8 mr-8 flex justify-between items-center">
+            <a href="#" class=" text-gray-800 navigation-link">All posts</a>
 
-            <a href="#" class="font-semibold text-gray-800">About us</a>
+            <a href="#" class=" text-gray-800 navigation-link">About us</a>
+
+            <a href="#" class=" text-gray-800 navigation-link">Contact</a>
+
+
         </div>
         
 
+        
+        
         <button
             @click="dropdown=!dropdown"
             class="flex items-center gap-1 p-1 rounded-lg hover:bg-white transition">
 
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 font-bold" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd" />
-            </svg>
+            
+
+            <img src="https://media.istockphoto.com/id/1184187261/photo/portrait-of-cheerful-bearded-black-man-over-yellow-background.jpg?s=612x612&w=0&k=20&c=me77y_a3sfKKOauLJpMMQo3wctCyMTf9_PtQT6YLhN4=" alt=""
+                class="block rounded-full h-10 w-10">
+
+            
         </button>
+
+        <a href="#" class="navigation-link-2 text-blue-500 font-semibold ml-2">Logout</a>
     </div>
+
+    
 
     {{-- dropdown --}}
     <div
