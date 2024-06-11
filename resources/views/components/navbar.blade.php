@@ -24,8 +24,8 @@
             </div>
         @endif
 
-        <div class="navigation space-x-8 mr-8 flex justify-between items-center">
-            <a href="#" class=" text-gray-800 navigation-link">All posts</a>
+        <div class="navigation space-x-8 mr-6 flex justify-between items-center">
+            <a href="{{ route('posts.index') }}" class=" text-gray-800 navigation-link">All posts</a>
 
             <a href="#" class=" text-gray-800 navigation-link">About us</a>
 
@@ -33,67 +33,53 @@
 
 
         </div>
-        
 
         
-        
-        <button
-            @click="dropdown=!dropdown"
-            class="flex items-center gap-1 p-1 rounded-lg hover:bg-white transition">
+        @auth
 
-            
+            <div class="separator h-6 w-[1px] bg-gray-500 mr-4"></div>
 
-            <img src="https://media.istockphoto.com/id/1184187261/photo/portrait-of-cheerful-bearded-black-man-over-yellow-background.jpg?s=612x612&w=0&k=20&c=me77y_a3sfKKOauLJpMMQo3wctCyMTf9_PtQT6YLhN4=" alt=""
-                class="block rounded-full h-10 w-10">
+            {{-- <p class=" mr-2">{{ auth()->user()->name }}</p> --}}
 
-            
-        </button>
-
-        <a href="#" class="navigation-link-2 text-blue-500 font-semibold ml-2">Logout</a>
-    </div>
-
+            <div class="flex gap-4 items-center">
+                <form class="" method="POST" action="{{ route('logout') }}">
+                    @csrf
     
+                    <a class="navigation-link-2 font-semibold text-blue-500" href="route('logout')"
+                        onclick="event.preventDefault();
+                        this.closest('form').submit();">
+                            Sign out
+                    </a>
+                </form>
+    
+                <button
+                @click="dropdown=!dropdown"
+                class="flex items-center gap-1 p-1 rounded-lg hover:bg-white transition">
+    
+                
+    
+                <img src="https://media.istockphoto.com/id/1184187261/photo/portrait-of-cheerful-bearded-black-man-over-yellow-background.jpg?s=612x612&w=0&k=20&c=me77y_a3sfKKOauLJpMMQo3wctCyMTf9_PtQT6YLhN4=" alt=""
+                    class="block rounded-xl h-10 w-10">
+    
+                </button> 
+            </div>
 
-    {{-- dropdown --}}
-    <div
-        x-cloak
-        x-show="dropdown" 
-        @click.away="dropdown=false"
-
-        x-transition:enter="transition ease-out duration-150"
-        x-transition:enter-start="origin-top scale-y-0"
-        x-transition:enter-end="origin-top scale-y-100"
-        x-transition:leave="transition ease-out duration-300"
-        x-transition:leave-start="origin-top scale-y-100"
-        x-transition:leave-end="origin-top scale-y-0"
-
-
-        class="absolute top-12 right-0 bg-white rounded-lg z-50 py-3 flex flex-col shadow-card border">
+            
+        @endauth
 
         @guest
-            @if (Route::has('register'))
-                <a href="{{ route('login') }}" class="hover:bg-gray-200 px-8 py-2 transition">Log in</a>
-            @endif
+            <div class="flex flex-start">
+                @if (Route::has('register'))
+                    <a href="{{ route('login') }}" class="px-3 py-[5px] border-2 border-sky-600 text-sky-600 border-r-0 font-semibold hover:text-sky-800 transition rounded-tl-md rounded-bl-md">Log in</a>
+                @endif
 
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="hover:bg-gray-200 px-8 py-2 transition">Register</a>
-            @endif
-        @endguest    
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="px-3 py-[5px] border-2 bg-sky-600 border-sky-600 text-white hover:text-sky-600 hover:bg-white transition font-semibold rounded-tr-md rounded-br-md">Sign up</a>
+                @endif
+            </div>
+        @endguest  
 
-
-        @auth
-            <a href="#" class="hover:bg-gray-200 px-8 py-2 transition">My profile</a>
-
-            <form class="w-full flex" method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                <a class="w-full hover:bg-gray-200 px-8 py-2 transition" href="route('logout')"
-                    onclick="event.preventDefault();
-                    this.closest('form').submit();">
-                        Sign out
-                </a>
-            </form>
-        @endauth
+        
     </div>
 
 </div>

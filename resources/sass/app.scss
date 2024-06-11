@@ -54,4 +54,45 @@
     text-decoration: none;
   }
   
+
+  /* vertical line to the left of the comments */
+.comments::before{
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 35px;
+  content: "";
+  width: 3px;
+  height: 100%;
+  background-color: rgba(0,0,0,0.07);
+  z-index: 1;
+  border-radius: 0.75rem;
+}
+
+/* horizontal line to the left of comment */
+.comment::before{
+  position: absolute;
+  display: block;
+  top: 3.2rem;
+  left: -58px;
+  content: "";
+  width: 35px;
+  height: 3px;
+  background-color: rgba(0,0,0,0.07);
+  border-radius: 0.75rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+@media (max-width: 1023px) {
+  .comments::before{
+      top: -63px;
+      left: 47px;
+      z-index: 0;
+  }
+
+  .comment::before{
+      display: none;
+  }
+}
   

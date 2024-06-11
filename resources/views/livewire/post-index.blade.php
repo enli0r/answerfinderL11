@@ -26,16 +26,15 @@
                 
             </div>
             
-            <a id="post-{{ $post->id }}-link" class="block font-semibold text-xl lgMin:hidden" href="#">{{ $post->title }}</a>
-            {{-- href="{{ route('posts.show', $post) }}" --}}
+            <a id="post-{{ $post->id }}-link" class="block font-semibold text-xl lgMin:hidden" href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>  
 
     </div>
 
     <div class="w-full">
 
         <div class="mb-8 lg:mb-4">
-            {{-- href="{{ route('posts.show', $post) }}" --}}
-            <a id="post-{{ $post->id }}-link" class="block font-bold text-lg mb-3 lg:hidden" href="#">{{ $post->title }}</a>
+            
+            <a id="post-{{ $post->id }}-link" class="block font-bold text-lg mb-3 lg:hidden" href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
             <p class="text-gray-600 line-clamp-3 lg:line-clamp-5 @if(str_word_count($post->description) <= 1) break-all @endif hover:cursor-text">{{ $post->description  }}</p>
         </div>
         
@@ -48,8 +47,7 @@
                 <p class="">•</p>
                 <p class="hover:cursor-text">{{ $post->created_at->diffForHumans() }}</p>
                 <p class="">•</p>
-                {{-- {{ $post->comments->count() }} --}}
-                <p class="text-gray-900 hover:cursor-text w-20">5 comments</p>
+                <p class="text-gray-900 hover:cursor-text w-20">{{ $post->comments->count() }} comments</p>
             </div>
         </div>
     </div>

@@ -34,11 +34,11 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
-    {
-        //
+    public function show(Post $post){
+        return view('posts.show', [
+            'post' => $post,
+        ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      */

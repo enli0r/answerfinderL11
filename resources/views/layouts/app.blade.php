@@ -6,8 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'answerfinder') }}</title>
-
-    
+        <link rel="icon" href="../img/logo.png">
 
         {{-- Fonts
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"> --}}
@@ -25,8 +24,6 @@
     </head>
     
     <body class="">
-
-
         <header class="container max-w-main mx-auto mb-5 mt-3 lg:px-5">
             <x-navbar />
         </header>

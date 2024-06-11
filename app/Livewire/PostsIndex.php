@@ -4,15 +4,47 @@ namespace App\Livewire;
 
 use App\Models\Post;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PostsIndex extends Component
 {
+    use WithPagination;
+
+    public $sortDirection = 'desc';
+    public $search;
+
+    protected $queryString = ['search'];
+
+    protected $listeners = ['postWasCreated', 'postWasDeleted'];
+
+    public function postWasCreated(){
+        $this->resetPage();
+    }
+
+    public function postWasDeleted(){
+        $this->resetPage();
+    }
+
+    public function sort($sortDirection){
+
+        if($this->sortDirection != $sortDirection)
+        {
+            $this->sortDirection = $sortDirection;
+        }
+    }
+
+    public function updatingSerach(){
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $posts = Post::all();
-
         return view('livewire.posts-index', [
-            'posts' => $posts
+            'posts' => Post::when(strlen($this->search) >= 2, function($query){
+                return $query->where('title', 'like', '%'.$this->search.'%');
+            })
+            ->orderBy('created_at', $this->sortDirection)
+            ->get()
         ]);
     }
 }

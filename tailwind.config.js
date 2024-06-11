@@ -30,7 +30,8 @@ export default {
             colors: {
                 'gray-background' : '#f7f8fc',
                 'half-transparent': 'rgba(0,0,0,0.5)',
-                'dark-bg' : '#2D3141'
+                'dark-bg' : '#2D3141',
+                'sky2' : '#54b3d6'
             },
 
             maxWidth: {

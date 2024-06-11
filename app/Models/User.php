@@ -48,4 +48,13 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany(Post::class);
     }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function votes(){
+        return $this->belongsToMany(Comment::class, 'votes');
+    }
+
 }

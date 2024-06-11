@@ -49,9 +49,10 @@
         @endauth
     
         @guest
-        <div class="flex justify-center gap-3 text-center">
-            <a href="{{ route('login') }}" class="text-white bg-blue-500 text-md font-semibold pointer rounded-2xl px-4 py-3 flex-1 hover:bg-blue-400 border-red-500">Log in</a>
-            <a href="{{ route('register') }}" class="bg-gray-200 text-black text-md font-semibold pointer rounded-2xl px-4 py-3 flex-1 hover:bg-gray-100">Sign up</a>
+        <div class="flex justify-center text-center items-center">
+            <a href="{{ route('login') }}" class="w-24 py-2 border-2 border-sky-600 text-sky-600 rounded-md hover:text-sky-800 font-semibold">Log in</a>
+            <p class="text-sm font-semibold text-gray-600 mx-4">or</p>
+            <a href="{{ route('register') }}" class="w-24 py-2 border-2 border-sky-600 bg-sky-600 text-white rounded-md hover:text-sky-800 hover:bg-white font-semibold transition">Sign up</a>
         </div>
         @endguest
     </div>
