@@ -1,9 +1,10 @@
 <div 
 x-data="{editOpen:false, visible:true, showMore:false}"
-x-init="window.livewire.on('postWasEdited', () => {
-    visible=true;
-    editOpen=false;
-})"
+x-on:postedited.window="
+visible = true;
+editOpen = false;
+showMore = false;
+"
 >
     <div class="w-full rounded-xl bg-white mb-4 p-5 flex gap-5 lg:flex-col lg:gap-3 border border-slate-200">
         
@@ -89,8 +90,9 @@ x-init="window.livewire.on('postWasEdited', () => {
                             <p
                             @click=
                                 "
-                                showMore=false
-                                $dispatch('custom-post-delete-popup')
+                                console.log('hehexd');
+                                showMore=false;
+                                $dispatch('custom-post-delete-popup');
                                 "
                             class="hover:bg-gray-200 hover:cursor-pointer  py-2 px-3 font-semibold" href="">Delete</p>
                     </div>
@@ -103,9 +105,9 @@ x-init="window.livewire.on('postWasEdited', () => {
             </div>
         </div>
 
-        {{-- <livewire:edit-post :post="$post" /> --}}
+        <livewire:edit-post :post="$post" />
     </div>
         
-    {{-- <livewire:add-comment :post="$post"/> --}}
+    <livewire:add-comment :post="$post"/>
 </div>    
 

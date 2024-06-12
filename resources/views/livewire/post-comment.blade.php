@@ -134,8 +134,8 @@
                 </div>
                 {{-- end of comment info --}}
 
-                {{-- <livewire:edit-comment :key="$comment->id" :comment='$comment'/> --}}
-                {{-- <livewire:comment-delete-popup :comment='$comment' /> --}}
+                <livewire:edit-comment :key="$comment->id" :comment='$comment'/>
+                <livewire:comment-delete-popup :comment='$comment' />
             </div>
         </div>
     

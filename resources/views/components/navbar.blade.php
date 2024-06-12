@@ -2,27 +2,18 @@
     x-data="{dropdown:false}"
     class="navbar flex items-center justify-between relative pl-5">
 
-    
       
-    <img src="../img/a5.png" alt="" class="w-[240px] mb-3">
+    <a href="{{ route('posts.index') }}"><img src="../img/a5.png" alt="" class="w-[240px] mb-3"></a>
 
-    {{-- <div class="flex justify-between items-center space-x-3 border-2 border-blue-400 rounded-xl px-2 py-2">
-        <img src="../img/cv.png" class="w-5 h-5" alt="">
+    <div class="lgMin:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+          
+    </div>
 
-        <img src="../img/linkedin.png" class="w-5 h-5" alt="">
 
-        <img src="../img/github-mark.png" class="w-5 h-5" alt="">
-
-    </div> --}}
-
-    <div class="flex items-center justify-between">
-        
-
-        @if (Route::has('login'))
-            <div class="px-6 py-4">
-                
-            </div>
-        @endif
+    <div class="flex items-center justify-between lg:hidden">
 
         <div class="navigation space-x-8 mr-6 flex justify-between items-center">
             <a href="{{ route('posts.index') }}" class=" text-gray-800 navigation-link">All posts</a>
@@ -30,16 +21,12 @@
             <a href="#" class=" text-gray-800 navigation-link">About us</a>
 
             <a href="#" class=" text-gray-800 navigation-link">Contact</a>
-
-
         </div>
 
         
         @auth
 
             <div class="separator h-6 w-[1px] bg-gray-500 mr-4"></div>
-
-            {{-- <p class=" mr-2">{{ auth()->user()->name }}</p> --}}
 
             <div class="flex gap-4 items-center">
                 <form class="" method="POST" action="{{ route('logout') }}">
@@ -83,3 +70,16 @@
     </div>
 
 </div>
+
+
+
+
+
+    {{-- <div class="flex justify-between items-center space-x-3 border-2 border-blue-400 rounded-xl px-2 py-2">
+        <img src="../img/cv.png" class="w-5 h-5" alt="">
+
+        <img src="../img/linkedin.png" class="w-5 h-5" alt="">
+
+        <img src="../img/github-mark.png" class="w-5 h-5" alt="">
+
+    </div> --}}

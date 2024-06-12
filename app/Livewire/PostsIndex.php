@@ -15,13 +15,13 @@ class PostsIndex extends Component
 
     protected $queryString = ['search'];
 
-    protected $listeners = ['postWasCreated', 'postWasDeleted'];
+    protected $listeners = ['postWasCreated', 'postdeleted'];
 
     public function postWasCreated(){
         $this->resetPage();
     }
 
-    public function postWasDeleted(){
+    public function postdeleted(){
         $this->resetPage();
     }
 

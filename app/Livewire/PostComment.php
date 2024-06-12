@@ -12,17 +12,16 @@ class PostComment extends Component
     public $post;
     public $hasVoted;
 
-    protected $listeners = ['commentWasEdited'];
+    protected $listeners = ['commentedited'];
 
-    public function commentWasEdited(){
+    public function commentedited(){
         $this->comment->refresh();
     }
 
     public function mount(Comment $comment, Post $post){
         $this->comment = $comment;
         $this->post = $post;
-        // $this->hasVoted = $comment->isVotedByUser(auth()->user()); //function in comment model
-        $this->hasVoted = false;
+        $this->hasVoted = $comment->isVotedByUser(auth()->user()); //function in comment model
     }
 
     public function vote(){

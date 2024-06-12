@@ -6,7 +6,7 @@ use App\Models\Post;
 use App\Models\Vote;
 use Livewire\Component;
 
-class PostIndex extends Component
+class PostDeletePopup extends Component
 {
     public $post;
 
@@ -15,9 +15,7 @@ class PostIndex extends Component
     }
 
     public function deletePost(){
-
         foreach($this->post->comments as $comment){
-
             //deleting all of the votes for that comment
             foreach(Vote::all() as $vote){
                 if($comment->id == $vote->comment_id){
@@ -32,13 +30,14 @@ class PostIndex extends Component
         //deleting the post
         $this->post->delete();
         
+        $this->dispatch('postdeleted', 'Post was successfully deleted!');
 
-        $this->dispatch('postWasDeleted');
+        return redirect()->route('posts.index')->with('message', 'Post was successfully deleted!');
     }
-
+    
 
     public function render()
     {
-        return view('livewire.post-index');
+        return view('livewire.post-delete-popup');
     }
 }

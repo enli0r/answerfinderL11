@@ -9,17 +9,17 @@ class PostComments extends Component
 {
     public $post;
 
-    protected $listeners = ['commentWasAdded', 'hasVoted', 'commentWasDeleted'];
+    protected $listeners = ['commentadded', 'hasVoted', 'commentdeleted'];
 
     public function mount(Post $post){
         $this->post = $post;
     }
 
-    public function commentWasAdded(){
+    public function commentadded(){
         $this->post->refresh();
     }
 
-    public function commentWasDeleted(){
+    public function commentdeleted(){
         $this->post->refresh();
     }
 

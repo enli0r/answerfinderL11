@@ -17,7 +17,7 @@
             
             <livewire:post-comments :post="$post"/>
         
-            {{-- <livewire:post-delete-popup :post="$post" /> --}}
+            <livewire:post-delete-popup :post="$post" />
         </div>
     </div>
 </x-app-layout>

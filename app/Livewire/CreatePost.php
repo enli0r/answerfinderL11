@@ -34,11 +34,11 @@ class CreatePost extends Component
         $this->reset('title');
         $this->reset('description');
 
-        // $this->emit('postWasCreated', 'Post was successfully created!');
+        $this->dispatch('postWasCreated', 'Post was successfully created!');
 
-        // if(url()->previous() != 'http://localhost/answerfinder/public'){
-        //     return redirect()->route('posts.index')->with('message', 'Post was successfully created!');
-        // }
+        if(url()->previous() != 'http://localhost/answerfinder/public'){
+            return redirect()->route('posts.index')->with('message', 'Post was successfully created!');
+        }
     }
 
     public function render()

@@ -2,9 +2,7 @@
     {{-- Filters --}}
 
     <div x-data='{visible:false, fullSearch:false}' class="mb-6">
-        <div class="flex justify-start items-baseline mb-2 gap-3">
-
-             
+        <div class="flex justify-start items-baseline mb-2 gap-3">  
             <div 
                 
                 class="flex justify-start items-baseline gap-3 lg:self-end">
