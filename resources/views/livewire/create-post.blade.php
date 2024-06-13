@@ -88,7 +88,7 @@
         x-transition:leave-end="origin-bottom scale-y-0"
         @click.away="showCreatePost = false"
 
-        class="fixed top-56 right-5 lg:h-screen left-5 z-30 bg-white rounded-2xl p-6 shadow-dialog lgMin:hidden"
+        class="fixed top-[300px] right-5 lg:h-screen left-5 z-30 bg-white rounded-2xl p-6 shadow-dialog lgMin:hidden"
     >
         <div class="flex w-full justify-end relative">
             <button

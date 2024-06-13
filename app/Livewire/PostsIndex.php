@@ -44,7 +44,7 @@ class PostsIndex extends Component
                 return $query->where('title', 'like', '%'.$this->search.'%');
             })
             ->orderBy('created_at', $this->sortDirection)
-            ->get()
+            ->paginate(5)
         ]);
     }
 }

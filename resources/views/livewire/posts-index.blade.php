@@ -4,7 +4,7 @@
     <div x-data='{visible:false, fullSearch:false}' class="mb-6">
         <div class="flex justify-start items-baseline mb-2 gap-3">  
             <div 
-                
+                x-show="!fullSearch"
                 class="flex justify-start items-baseline gap-3 lg:self-end">
                 <div class="relative">
                     {{-- Newest first/Oldest firstt --}}
@@ -57,11 +57,11 @@
             @click.away="fullSearch =  false"
             class="flex-1 w-full">
                 {{-- pc version of search --}}
-                <form action="" method="POST" class="sm:hidden overflow-hidden search-form" id="pc-search">
+                <form action="" method="POST" class="sm:hidden overflow-hidden" id="pc-search">
                     @csrf
 
                     <div class="relative">
-                        <input wire:model.live="search" type="search" class="search-form-input rounded-2xl bg-white text-black border border-slate-200 text-sm py-3 pl-12 placeholder-gray-900 w-full placeholder:font-semibold focus:border-slate-200 focus:outline-none focus:ring-0" style="border-color: #e5e7eb" placeholder="Search" id="pc-search-input">
+                        <input wire:model.live="search" type="search" class="rounded-2xl bg-white text-black border border-slate-200 text-sm py-3 pl-12 placeholder-gray-900 w-full placeholder:font-semibold focus:border-slate-200 focus:outline-none focus:ring-0" style="border-color: #e5e7eb" placeholder="Search" id="pc-search-input">
 
                         <div class="absolute ml-5" style="left:0; top:50%; transform:translateY(-50%)">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -76,12 +76,12 @@
                     @csrf
 
                     <div class="relative">
-                        <input wire:model.live="search" type="search" class="search-form-input rounded-2xl bg-white text-black border-none text-sm py-3 placeholder-gray-900 w-full" style="border-color: #e5e7eb" id="phone-search-input">
+                        <input wire:model.live="search" type="search" class="search-form-input rounded-2xl bg-white text-black border border-slate-200 text-sm py-3 pl-12 placeholder-gray-900 w-full placeholder:font-semibold focus:border-slate-200 focus:outline-none focus:pl-4" id="phone-search-input">
 
                         <div 
                         x-show="!fullSearch"
                         class="absolute" style="left:50%; top:50%;  transform: translate(-50%, -50%);" >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </div>
@@ -97,4 +97,9 @@
     @foreach ($posts as $post)
         <livewire:post-index :key="$post->id" :post="$post"/>
     @endforeach
+
+    <div class="my-4">
+        {{ $posts->links() }}
+    </div>
+    
 </div>
