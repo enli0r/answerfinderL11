@@ -2,24 +2,27 @@
 
     <x-guest-navbar />
 
-    <div class="w-full bg-gray-200 rounded-xl py-2 px-4 mb-2 flex justify-between items-center">
-        <div class="links w-1/2 flex justify-between items-center">  
-            <a href="https://github.com/enli0r/answerfinderL11"><i class="fa-brands fa-github"></i> Github</a>
-            <a href="https://www.linkedin.com/in/milan19nikolic/" class="text-blue-500 hover:text-blue-700 transition"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="https://www.instagram.com/_mniko/" class="text-red-400 hover:text-red-600 transition"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <div class="w-full md:p-2">
+        <div class=" bg-gray-200 rounded-xl py-2 px-4 mb-2 flex justify-between items-center md:rounded-lg md:flex-col md:gap-4">
+            <div class="links w-1/2 flex justify-between items-center md:w-full">  
+                <a href="https://github.com/enli0r/answerfinderL11"><i class="fa-brands fa-github"></i> Github</a>
+                <a href="https://www.linkedin.com/in/milan19nikolic/" class="text-blue-500 hover:text-blue-700 transition"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.instagram.com/_mniko/" class="text-red-400 hover:text-red-600 transition"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            </div>
+            <a href="#" class="navigation-link font-semibold uppercase text-sm text-sky-900">Seminarski_rad.pdf</a>
         </div>
-        <a href="#" class="navigation-link font-semibold uppercase text-sm text-sky-900">Seminarski_rad.pdf</a>
     </div>
+    
 
 
-    <div class="flex w-full mb-4 gap-4 bg-gray-200 border rounded-xl shadow-xl">
-        <div class="w-[400px]">
-            <img src="/storage/uploads/images/my-img.jpeg" class="w-full h-full rounded-lg">
+    <div class="flex w-full mb-4 border rounded-xl shadow-xl md:flex-col-reverse md:p-2 md:border-none">
+        <div class="w-[400px] md:w-full">
+            <img src="/storage/uploads/images/my-img.jpeg" class="w-full h-full rounded-l-lg md:rounded-none md:rounded-b-lg">
         </div>
 
         
-        <div class="flex justify-start items-center flex-col flex-1 p-4">
-            <h1 class="text-[60px] uppercase font-bold text-sky-900">Milan Nikolic</h1>
+        <div class="flex justify-start items-center flex-col flex-1 p-4 bg-gray-200 rounded-r-lg md:rounded-none md:rounded-t-lg">
+            <h1 class="text-[60px] uppercase font-bold text-sky-900 md:text-[40px]">Milan Nikolic</h1>
             <p class="text-gray-800">Full-Stack Web Developer</p>
 
             {{-- Technical skills --}}
