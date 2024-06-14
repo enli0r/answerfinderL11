@@ -35,7 +35,7 @@
         
         @auth
 
-            <div class="separator h-6 w-[1px] bg-gray-500 mr-4"></div>
+            {{-- <div class="separator h-6 w-[1px] bg-gray-500 mr-4"></div> --}}
 
             <div class="flex gap-4 items-center">
                 <form class="" method="POST" action="{{ route('logout') }}">
