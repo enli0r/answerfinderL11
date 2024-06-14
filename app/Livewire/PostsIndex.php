@@ -12,6 +12,7 @@ class PostsIndex extends Component
 
     public $sortDirection = 'desc';
     public $search;
+    public $hasComments;
 
     protected $queryString = ['search'];
 
@@ -42,6 +43,11 @@ class PostsIndex extends Component
         return view('livewire.posts-index', [
             'posts' => Post::when(strlen($this->search) >= 2, function($query){
                 return $query->where('title', 'like', '%'.$this->search.'%');
+            })
+            ->when($this->hasComments, function($query) {
+                return $query->whereHas('comments', function($query) {
+                    $query->where('id', '>', 0);
+                });
             })
             ->orderBy('created_at', $this->sortDirection)
             ->paginate(5)

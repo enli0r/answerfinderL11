@@ -1,5 +1,5 @@
 <div
-    x-data="{dropdown:false, sidebar:false}"
+    x-data="{dropdown:false, sidebar:false, uploadPhoto:false}"
     class="navbar flex items-center justify-between relative pl-5"
     @sidebar-open.window="document.getElementById('main-body').style.overflowY = 'hidden'"
     @sidebar-closed.window="document.getElementById('main-body').style.overflowY = 'auto'"
@@ -28,9 +28,8 @@
         <div class="navigation space-x-8 mr-6 flex justify-between items-center">
             <a href="{{ route('posts.index') }}" class=" text-gray-800 navigation-link">All posts</a>
 
-            <a href="#" class=" text-gray-800 navigation-link">About us</a>
+            <a href="{{ route('about-author') }}" class=" text-gray-800 navigation-link">About author</a>
 
-            <a href="#" class=" text-gray-800 navigation-link">Contact</a>
         </div>
 
         
@@ -48,16 +47,33 @@
                             Sign out
                     </a>
                 </form>
-    
+
                 <button
+                @click="uploadPhoto = !uploadPhoto"
                 class="flex items-center gap-1 p-1 rounded-lg hover:bg-white transition">
-    
-                
-    
-                <img src="https://media.istockphoto.com/id/1184187261/photo/portrait-of-cheerful-bearded-black-man-over-yellow-background.jpg?s=612x612&w=0&k=20&c=me77y_a3sfKKOauLJpMMQo3wctCyMTf9_PtQT6YLhN4=" alt=""
-                    class="block rounded-xl h-10 w-10">
+
+                    <img src="/storage/uploads/images/{{ $img_name }}" alt="" class="block rounded-xl h-10 w-10">
     
                 </button> 
+
+                <div x-cloak x-show="uploadPhoto" class="text-sm rounded-2xl bg-white font-semibold hover:cursor-pointer border border-slate-200 py-3 px-5 absolute top-16 right-0 z-20 shadow-2xl"
+                x-transition:enter="transition ease-out duration-150"
+                x-transition:enter-start="origin-top scale-y-0"
+                x-transition:enter-end="origin-top scale-y-100"
+                x-transition:leave="transition ease-out duration-300"
+                x-transition:leave-start="origin-top scale-y-100"
+                x-transition:leave-end="origin-top scale-y-0"
+                >
+
+                    <form action="{{ route('upload.img') }}" method="POST" class="flex items-center" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="img">
+
+                        <button type="submit" name="uploadPhoto" value="1" class="px-3 py-2 bg-black rounded-lg text-white text-sm">Change photo</button>
+                    </form>
+                </div>
+    
+                
             </div>
 
             
@@ -73,6 +89,7 @@
     </div>
 
     <div 
+    x-cloak
     x-show="sidebar"
     @click="
     sidebar = false;
@@ -87,7 +104,14 @@
 
 
     <aside 
+        x-cloak
         x-show="sidebar" 
+        x-transition:enter="transition linear duration-250"
+        x-transition:enter-start="transform translate-x-full"
+        x-transition:enter-end="transform translate-x-0"
+        x-transition:leave="transition linear duration-250"
+        x-transition:leave-start="transform translate-x-0"
+        x-transition:leave-end="transform translate-x-full"
         class="lgMin:hidden h-[100%] w-full fixed top-0 right-0 bottom-0 z-30 text-gray-200 overflow-y-hidden flex">
 
         <div @click="
@@ -106,9 +130,8 @@
 
                 <a href="{{ route('posts.index') }}" class=" text-gray-200 w-full py-2 border-t border-b border-white hover:bg-gray-400">All posts</a>
     
-                <a href="#" class=" text-gray-200 w-full py-2 border-b border-white hover:bg-gray-400">About us</a>
+                <a href="{{ route('about-author') }}" class=" text-gray-200 w-full py-2 border-b border-white hover:bg-gray-400">About author</a>
     
-                <a href="#" class=" text-gray-200 w-full py-2 border-b border-white hover:bg-gray-400">Contact</a>
                 
 
                 @auth
@@ -147,16 +170,3 @@
     </aside>
 
 </div>
-
-
-
-
-
-    {{-- <div class="flex justify-between items-center space-x-3 border-2 border-blue-400 rounded-xl px-2 py-2">
-        <img src="../img/cv.png" class="w-5 h-5" alt="">
-
-        <img src="../img/linkedin.png" class="w-5 h-5" alt="">
-
-        <img src="../img/github-mark.png" class="w-5 h-5" alt="">
-
-    </div> --}}

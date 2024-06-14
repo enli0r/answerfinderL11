@@ -1,7 +1,7 @@
 <div>
     {{-- Filters --}}
 
-    <div x-data='{visible:false, fullSearch:false}' class="mb-6">
+    <div x-data='{visible:false, fullSearch:false, showFilters:false}' class="mb-6">
         <div class="flex justify-start items-baseline mb-2 gap-3">  
             <div 
                 x-show="!fullSearch"
@@ -32,7 +32,7 @@
                         x-transition:leave="transition ease-out duration-300"
                         x-transition:leave-start="origin-top scale-y-100"
                         x-transition:leave-end="origin-top scale-y-0"
-                        class="mb-6 bg-white font-semibold rounded-md text-left py-1 mt-12 absolute left-0 top-0 w-full shadow-card border"
+                        class="mb-6 bg-white font-semibold rounded-md text-left py-1 mt-12 absolute left-0 top-0 w-full border shadow-2xl"
                     >
                         <a wire:click.prevent="sort('desc')" class="block py-2 px-5 hover:bg-gray-100 text-sm @if($sortDirection == 'desc') bg-gray-100 @endif" href="">Newest first</a>
                         <a wire:click.prevent="sort('asc')" class="block py-2 px-5 hover:bg-gray-100 text-sm @if($sortDirection == 'asc') bg-gray-100 @endif" href="">Oldest first</a>
@@ -42,10 +42,34 @@
                 </div>
     
                 {{-- Other filter button --}}
-                <button class="text-sm rounded-2xl bg-white font-semibold hover:cursor-pointer  border border-slate-200 py-3 px-5">
-                    Filter
-                    <i class="fa-solid fa-angle-down ml-1"></i>
-                </button>
+                <div class="relative">
+                    <button 
+                    @click = "showFilters=!showFilters"
+                    class="text-sm rounded-2xl bg-white font-semibold hover:cursor-pointer  border border-slate-200 py-3 px-5">
+                        Filter
+                        <i class="fa-solid fa-angle-down ml-1"></i>
+                    </button>
+    
+                    <div x-cloak x-show='showFilters' @click.away="showFilters = false"
+                            x-transition:enter="transition ease-out duration-150"
+                            x-transition:enter-start="origin-top scale-y-0"
+                            x-transition:enter-end="origin-top scale-y-100"
+                            x-transition:leave="transition ease-out duration-300"
+                            x-transition:leave-start="origin-top scale-y-100"
+                            x-transition:leave-end="origin-top scale-y-0"
+                            class="mb-6 bg-white font-semibold rounded-md text-left py-1 mt-12 absolute left-0 top-0  shadow-2xl border w-[220px] sm:-right-[80px] sm:left-auto"
+                        >
+                            <form action="" method="POST" class="p-4">
+                                @csrf
+
+                                <input 
+                                @click = "showFilters = false"
+                                wire:model.live="hasComments" type="checkbox" name="hasComments" value="1" id="hasComments" class="hover:cursor-pointer">
+                                <label for="hasComments" class="text-gray-900 text-sm ml-2">Posts with comments</label>
+                            </form>
+                    </div>
+                </div>
+                
             </div>
 
             
@@ -101,5 +125,44 @@
     <div class="my-4">
         {{ $posts->links() }}
     </div>
+
+    <hr clas="my-6">
     
+    <h1 class="text-md font-semibold uppercase mt-8 mb-2">Recently seen</h1>
+
+    @if (Cookie::get('title') != null)
+        <div class="post-container w-full rounded-xl bg-white mb-6 p-5 flex gap-5 hover:shadow-md hover:cursor-pointer lg:flex-col lg:gap-3 border border-solid border-slate-200">
+
+            <div class="flex gap-3 justify-start shrink-0 lg:items-top">
+                    <div class="w-14 shrink-0">
+                        
+                        <img src="/storage/uploads/images/@php echo Cookie::get('img'); @endphp" alt="" class="block rounded-xl h-14 full">
+                    </div>
+                    
+                    <a class="block font-semibold text-xl lgMin:hidden" href="/posts/@php echo Cookie::get('post_id') @endphp">@php echo(Cookie::get('title')); @endphp</a>  
+
+            </div>
+
+            <div class="w-full">
+
+                <div class="mb-8 lg:mb-4">
+                    <a class="block font-bold text-lg mb-3 lg:hidden" href="/posts/@php echo Cookie::get('post_id') @endphp">@php echo(Cookie::get('title')); @endphp</a>
+                    <p class="text-gray-600 line-clamp-3 lg:line-clamp-5 @php if(str_word_count(Cookie::get('description')) <= 1) echo ('break-all'); @endphp hover:cursor-text">@php echo Cookie::get('description'); @endphp</p>
+                </div>
+                
+
+                <div class="flex justify-between items-center relative">
+                    <div class="flex gap-2 text-xs items-center w-full text-gray-400 font-semibold">
+                        <div class="">
+                            <p class="text-sm text-blue-500">@php echo Cookie::get('user_name'); @endphp</p>
+                        </div>
+                        <p class="">•</p>
+                        <p class="hover:cursor-text">@php echo \Carbon\Carbon::parse(Cookie::get('created_at'))->diffForHumans(); @endphp</p>
+                        <p class="">•</p>
+                        <p class="text-gray-900 hover:cursor-text w-20">@php echo Cookie::get('commentsCount'); @endphp comments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 </div>

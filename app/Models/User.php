@@ -57,4 +57,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Comment::class, 'votes');
     }
 
+    public function image(){
+        return $this->hasOne(UserImage::class);
+    }
+
 }

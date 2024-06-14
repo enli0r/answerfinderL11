@@ -25,7 +25,7 @@
     
     <body id="main-body">
         <header class="container max-w-main mx-auto mb-5 mt-3 lg:px-5">
-            <x-navbar />
+            <livewire:navbar />
         </header>
 
         <main class="container mx-auto max-w-main">  

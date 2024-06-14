@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Post;
 use App\Models\Comment;
 use Livewire\Component;
+use App\Models\UserImage;
 
 class PostComment extends Component
 {
@@ -45,8 +46,16 @@ class PostComment extends Component
 
     public function render()
     {
+        $user_id = $this->comment->user->id;
+        $img_name = UserImage::where('user_id', $user_id)->value('name');
+
+        if($img_name == null){
+            $img_name = 'no-user.jpg';
+        }
+
         return view('livewire.post-comment',[
-            'votescount' => $this->comment->votes()->count()
+            'votescount' => $this->comment->votes()->count(),
+            'img_name' => $img_name
         ]);
     }
 }

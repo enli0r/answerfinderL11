@@ -5,6 +5,9 @@ namespace App\Livewire;
 use App\Models\Post;
 use App\Models\Vote;
 use Livewire\Component;
+use App\Models\UserImage;
+use Illuminate\Support\Facades\Cookie;
+use Hamcrest\Arrays\SeriesMatchingOnce;
 
 class PostIndex extends Component
 {
@@ -39,6 +42,17 @@ class PostIndex extends Component
 
     public function render()
     {
-        return view('livewire.post-index');
+        //Img
+        $user_id = $this->post->user->id;
+        $img_name = UserImage::where('user_id', $user_id)->value('name');
+
+        if($img_name == null){
+            $img_name = 'no-user.jpg';
+        }
+
+
+        return view('livewire.post-index', [
+            'img_name' => $img_name
+        ]);
     }
 }

@@ -1,29 +1,10 @@
-<div id="post-{{ $post->id }}" class="post-container w-full rounded-xl bg-white mb-6 p-5 flex gap-5 hover:shadow-card hover:cursor-pointer lg:flex-col lg:gap-3 border border-solid border-slate-200
-    
-    {{-- @auth
-        @php
-            
-            if($post->user_id == auth()->user()->id)
-            echo('');
+<div id="post-{{ $post->id }}" class="post-container w-full rounded-xl bg-white mb-6 p-5 flex gap-5 hover:shadow-md hover:cursor-pointer lg:flex-col lg:gap-3 border border-solid border-slate-200
 
-
-        @endphp
-    @endauth --}}
-    
-    
     ">
 
     <div class="flex gap-3 justify-start shrink-0 lg:items-top">
             <div class="w-14 shrink-0">
-                <img src="https://t4.ftcdn.net/jpg/06/10/19/43/360_F_610194339_3CtGOkv4wIiAyybcib4IrFX0nnc83Bv6.jpg" alt=""
-                class="block rounded-xl h-14 full">
-                
-                {{-- @auth
-                    @if ($post->user_id == auth()->user()->id)
-                        <p class="block  text-purple-800 font-bold text-xs uppercase text-center mt-1">You</p>
-                    @endif
-                @endauth --}}
-                
+                <img src="/storage/uploads/images/{{ $img_name }}" alt="" class="block rounded-xl h-14 full">
             </div>
             
             <a id="post-{{ $post->id }}-link" class="block font-semibold text-xl lgMin:hidden" href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>  
@@ -51,5 +32,4 @@
             </div>
         </div>
     </div>
-    
 </div>

@@ -23,7 +23,7 @@
                     <div class="flex gap-3 items-top">
                         
                         <div class="w-14 shrink-0">
-                            <img src="https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg" alt=""
+                            <img src="/storage/uploads/images/{{ $img_name }}" alt=""
                             class="w-full h-14 rounded-xl hover:cursor-pointer">
 
                             {{-- @if ($comment->user_id == $post->user_id)

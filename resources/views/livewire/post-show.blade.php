@@ -11,9 +11,7 @@ showMore = false;
         <div 
             x-show="visible"
             class="flex gap-3 items-top justify-start shrink-0 lg:flex-row">
-            <img src="https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg" alt=""
-            class="block rounded-xl h-14 w-14">
-
+            <img src="/storage/uploads/images/{{ $img_name }}" alt="" class="block rounded-xl h-14 w-14">
             <a class="block font-semibold text-xl lgMin:hidden">{{ $post->title }}</a>
         </div>
     
