@@ -1,7 +1,7 @@
 <div
     x-data="{editClosed:true, isOpen:false, commentDelete:false, showMore:false}"
 >
-    <div class="comment relative rounded-xl bg-white text-black p-5 mb-6 lgMin:ml-24">
+    <div class="comment relative rounded-xl bg-white text-black p-5 mb-6 lgMin:ml-24 border">
         <div class="flex flex-col gap-5">
 
             <div class="flex gap-5 lg:gap-3 lg:flex-col-reverse">

@@ -34,6 +34,8 @@
 
         </main>
 
+        <x-footer />
+
 
         {{-- @if (session('message'))
             <x-notification-success :redirect="true" messageToDisplay="{{ session('message') }}"/>

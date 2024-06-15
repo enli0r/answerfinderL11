@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="auth-form w-[500px] sm:w-[80%] p-8 border mx-auto mt-10">
+    <div class="auth-form w-[500px] sm:w-[80%] p-8 border mx-auto mt-10 mb-10">
 
         <h1 class="text-[28px] font-bold text-sky-700 text-center mb-2">Sign up</h1>
         <p class="text-gray-500 text-center text-sm mb-4 sm:text-xs">We hope you get the answer you are looking for.</p>

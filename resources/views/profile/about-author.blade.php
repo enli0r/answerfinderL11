@@ -10,7 +10,7 @@
                 <a href="https://www.linkedin.com/in/milan19nikolic/" class="text-blue-500 hover:text-blue-700 transition"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
                 <a href="https://www.instagram.com/_mniko/" class="text-red-400 hover:text-red-600 transition"><i class="fa-brands fa-instagram"></i> Instagram</a>
             </div>
-            <a href="#" class="navigation-link font-semibold uppercase text-sm text-sky-900">Seminarski_rad.pdf</a>
+            <a href="{{ asset('68-2020_Answer_finder.pdf') }}" class="navigation-link font-semibold uppercase text-sm text-sky-900">Seminarski_rad.pdf</a>
         </div>
     </div>
     
