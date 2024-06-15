@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Interfaces\PostInterface;
 use App\Models\Post;
 use Livewire\Component;
 use Illuminate\Http\Response;
@@ -10,6 +11,12 @@ class CreatePost extends Component
 {   
     public $title;
     public $description;
+    protected PostInterface $postDAO;
+
+    public function boot(PostInterface $postDAO)
+    {
+        $this->postDAO = $postDAO;
+    }
 
     protected $rules = [
         'title' => 'required|min:3',
@@ -20,12 +27,13 @@ class CreatePost extends Component
     public function submit(){
         if(auth()->check()){
             $this->validate();
+            $this->postDAO->createPost($this->title, $this->description, auth()->user()->id);
 
-            Post::create([
-                'user_id' => auth()->user()->id,
-                'title' => $this->title,
-                'description' => $this->description
-            ]);
+            // Post::create([
+            //     'user_id' => auth()->user()->id,
+            //     'title' => $this->title,
+            //     'description' => $this->description
+            // ]);
 
         }else{
             abort(Response::HTTP_FORBIDDEN);

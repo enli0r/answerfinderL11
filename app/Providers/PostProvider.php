@@ -2,25 +2,25 @@
 
 namespace App\Providers;
 
-use App\Repositories\PostDAO;
 use App\Interfaces\PostInterface;
+use App\Repositories\PostDAO;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class PostProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      */
     public function register(): void
     {
-        $this->app->bind(PostInterface::class, PostDAO::class);
+        
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      */
     public function boot(): void
     {
-        //
+        // $this->app->bind(PostInterface::class, PostDAO::class);
     }
 }

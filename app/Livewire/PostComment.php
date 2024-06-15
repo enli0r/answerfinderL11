@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Interfaces\VoteInterface;
 use App\Models\Post;
 use App\Models\Comment;
 use Livewire\Component;
@@ -12,6 +13,13 @@ class PostComment extends Component
     public $comment;
     public $post;
     public $hasVoted;
+
+    protected VoteInterface $voteDAO;
+
+    public function boot(VoteInterface $voteDAO)
+    {
+        $this->voteDAO = $voteDAO;
+    }
 
     protected $listeners = ['commentedited'];
 
@@ -34,12 +42,14 @@ class PostComment extends Component
 
         if(!$this->hasVoted)
         {
-            $this->comment->vote(auth()->user());
+            $this->voteDAO->vote(auth()->user(), $this->comment->id);
+            // $this->comment->vote(auth()->user());
             $this->hasVoted = true;
         }
         else
         {
-            $this->comment->removeVote(auth()->user());
+            $this->voteDAO->removeVote(auth()->user(), $this->comment->id);
+            // $this->comment->removeVote(auth()->user());
             $this->hasVoted = false;
         }
     }

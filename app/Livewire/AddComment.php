@@ -6,11 +6,19 @@ use App\Models\Post;
 use App\Models\Comment;
 use Livewire\Component;
 use Illuminate\Http\Response;
+use App\Interfaces\CommentInterface;
 
 class AddComment extends Component
 {
     public $post;
     public $body;
+
+    protected CommentInterface $commentDAO;
+
+    public function boot(CommentInterface $commentDAO)
+    {
+        $this->commentDAO = $commentDAO;
+    }
 
     protected $rules = [
         'body' => 'required|min:4',
@@ -22,11 +30,12 @@ class AddComment extends Component
         }else{
             $this->validate();
 
-            Comment::create([
-                'user_id' => auth()->user()->id,
-                'post_id' => $this->post->id,
-                'body' => $this->body
-            ]);
+            $this->commentDAO->createComment(auth()->user()->id, $this->post->id, $this->body);
+            // Comment::create([
+            //     'user_id' => auth()->user()->id,
+            //     'post_id' => $this->post->id,
+            //     'body' => $this->body
+            // ]);
 
         }
 

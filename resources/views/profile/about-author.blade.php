@@ -4,6 +4,7 @@
 
     <div class="w-full md:p-2">
         <div class=" bg-gray-200 rounded-xl py-2 px-4 mb-2 flex justify-between items-center md:rounded-lg md:flex-col md:gap-4">
+            
             <div class="links w-1/2 flex justify-between items-center md:w-full">  
                 <a href="https://github.com/enli0r/answerfinderL11"><i class="fa-brands fa-github"></i> Github</a>
                 <a href="https://www.linkedin.com/in/milan19nikolic/" class="text-blue-500 hover:text-blue-700 transition"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
@@ -15,7 +16,7 @@
     
 
 
-    <div class="flex w-full mb-4 border rounded-xl shadow-xl md:flex-col-reverse md:p-2 md:border-none">
+    <div class="flex w-full border rounded-xl shadow-xl md:flex-col-reverse md:p-2 md:border-none mb-10">
         <div class="w-[400px] md:w-full">
             <img src="/storage/uploads/images/my-img.jpeg" class="w-full h-full rounded-l-lg md:rounded-none md:rounded-b-lg">
         </div>

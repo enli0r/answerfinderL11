@@ -4,12 +4,20 @@ namespace App\Livewire;
 
 use App\Models\Post;
 use Livewire\Component;
+use App\Interfaces\PostInterface;
 
 class EditPost extends Component
 {
     public $post;
     public $title;
     public $description;
+
+    protected PostInterface $postDAO;
+
+    public function boot(PostInterface $postDAO)
+    {
+        $this->postDAO = $postDAO;
+    }
 
     protected $rules = [
         'title' => 'required|max:255',
@@ -19,10 +27,11 @@ class EditPost extends Component
     public function edit(){
         $this->validate();
 
-        $this->post->update([
-            'title' => $this->title,
-            'description' => $this->description
-        ]);
+        $this->postDAO->updatePost($this->post, $this->title, $this->description);
+        // $this->post->update([
+        //     'title' => $this->title,
+        //     'description' => $this->description
+        // ]);
 
         $this->dispatch('postedited', 'Post was successfully updated!');
     }

@@ -1,11 +1,10 @@
 <div
     x-data="{dropdown:false, sidebar:false, uploadPhoto:false}"
-    class="navbar flex items-center justify-between relative pl-5"
+    class="navbar flex items-center justify-between relative pl-5 lgMin:border-b lgMin:border-gray-200"
     @sidebar-open.window="document.getElementById('main-body').style.overflowY = 'hidden'"
     @sidebar-closed.window="document.getElementById('main-body').style.overflowY = 'auto'"
     >
     
-
 
     <a href="{{ route('posts.index') }}"><img src="../img/a5.png" alt="" class="w-[240px] mb-3 sm:w-[200px]"></a>
 
@@ -26,10 +25,9 @@
     <div class="flex items-center justify-between lg:hidden">
 
         <div class="navigation space-x-8 mr-6 flex justify-between items-center">
-            <a href="{{ route('posts.index') }}" class=" text-gray-800 navigation-link">All posts</a>
+            <a href="{{ route('posts.index') }}" class=" text-gray-800 navigation-link font-semibold">All posts</a>
 
-            <a href="{{ route('about-author') }}" class=" text-gray-800 navigation-link">About author</a>
-
+            <a href="{{ route('about-author') }}" class=" text-gray-800 navigation-link font-semibold">About author</a>
         </div>
 
         

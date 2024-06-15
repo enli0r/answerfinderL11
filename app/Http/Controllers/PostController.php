@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\PostInterface;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    protected $postDao;
+
+    public function __construct(PostInterface $postDao)
+    {
+        $this->postDao = $postDao;
+    }
+
     /**
      * Display a listing of the resource.
      */

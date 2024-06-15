@@ -4,11 +4,19 @@ namespace App\Livewire;
 
 use App\Models\Comment;
 use Livewire\Component;
+use App\Interfaces\CommentInterface;
 
 class EditComment extends Component
 {
     public $comment;
     public $body;
+
+    protected CommentInterface $commentDAO;
+
+    public function boot(CommentInterface $commentDAO)
+    {
+        $this->commentDAO = $commentDAO;
+    }
 
     protected $rules = [
         'body' => 'required|max:255'
@@ -22,9 +30,12 @@ class EditComment extends Component
     public function editComment(){
         $this->validate();
 
-        $this->comment->update([
-            'body' => $this->body
-        ]);
+        $this->commentDAO->updateComment($this->comment, $this->body);
+
+
+        // $this->comment->update([
+        //     'body' => $this->body
+        // ]);
 
         $this->dispatch('commentedited', 'Comment was successfully updated!');
     }

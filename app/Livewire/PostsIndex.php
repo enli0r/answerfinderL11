@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Post;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Interfaces\PostInterface;
 
 class PostsIndex extends Component
 {
@@ -13,6 +14,12 @@ class PostsIndex extends Component
     public $sortDirection = 'desc';
     public $search;
     public $hasComments;
+    protected PostInterface $postDAO;
+
+    public function boot(PostInterface $postDAO)
+    {
+        $this->postDAO = $postDAO;
+    }
 
     protected $queryString = ['search'];
 
@@ -41,16 +48,17 @@ class PostsIndex extends Component
     public function render()
     {
         return view('livewire.posts-index', [
-            'posts' => Post::when(strlen($this->search) >= 2, function($query){
-                return $query->where('title', 'like', '%'.$this->search.'%');
-            })
-            ->when($this->hasComments, function($query) {
-                return $query->whereHas('comments', function($query) {
-                    $query->where('id', '>', 0);
-                });
-            })
-            ->orderBy('created_at', $this->sortDirection)
-            ->paginate(5)
+            'posts' => $this->postDAO->getAllPosts($this->search, $this->hasComments, $this->sortDirection)
+            // 'posts' => Post::when(strlen($this->search) >= 2, function($query){
+            //     return $query->where('title', 'like', '%'.$this->search.'%');
+            // })
+            // ->when($this->hasComments, function($query) {
+            //     return $query->whereHas('comments', function($query) {
+            //         $query->where('id', '>', 0);
+            //     });
+            // })
+            // ->orderBy('created_at', $this->sortDirection)
+            // ->paginate(5)
         ]);
     }
 }

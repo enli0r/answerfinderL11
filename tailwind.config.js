@@ -24,7 +24,7 @@ export default {
 
             'xl': {'max': '1279px'},
 
-            'lgMin' : {'min' : '1024px'}
+            'lgMin' : {'min' : '1024px'},
 
         },
 
