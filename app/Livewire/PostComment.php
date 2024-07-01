@@ -43,13 +43,11 @@ class PostComment extends Component
         if(!$this->hasVoted)
         {
             $this->voteDAO->vote(auth()->user(), $this->comment->id);
-            // $this->comment->vote(auth()->user());
             $this->hasVoted = true;
         }
         else
         {
             $this->voteDAO->removeVote(auth()->user(), $this->comment->id);
-            // $this->comment->removeVote(auth()->user());
             $this->hasVoted = false;
         }
     }

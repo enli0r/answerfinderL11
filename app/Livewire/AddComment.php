@@ -31,12 +31,6 @@ class AddComment extends Component
             $this->validate();
 
             $this->commentDAO->createComment(auth()->user()->id, $this->post->id, $this->body);
-            // Comment::create([
-            //     'user_id' => auth()->user()->id,
-            //     'post_id' => $this->post->id,
-            //     'body' => $this->body
-            // ]);
-
         }
 
         //resets body input field after submiting

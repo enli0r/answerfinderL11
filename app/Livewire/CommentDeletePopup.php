@@ -26,14 +26,6 @@ class CommentDeletePopup extends Component
 
         $this->commentDAO->deleteComment($this->comment);
 
-        // //Deleting all the votes for that comment
-        // foreach(Vote::all() as $vote){
-        //     if($vote->comment_id == $this->comment->id){
-        //         $vote->delete();
-        //     }
-        // }
-
-        // $this->comment->delete();
 
         $this->dispatch('commentdeleted', 'Comment was successfully deleted!');
     }

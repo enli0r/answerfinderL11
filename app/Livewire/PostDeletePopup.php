@@ -23,21 +23,6 @@ class PostDeletePopup extends Component
     }
 
     public function deletePost(){
-        // foreach($this->post->comments as $comment){
-        //     //deleting all of the votes for that comment
-        //     foreach(Vote::all() as $vote){
-        //         if($comment->id == $vote->comment_id){
-        //             $vote->delete();
-        //         }
-        //     }
-
-        //     //deleting the comment
-        //     $comment->delete();
-        // }
-
-        //deleting the post
-        // $this->post->delete();
-
         $this->postDAO->deletePost($this->post);
 
         

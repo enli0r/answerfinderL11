@@ -49,16 +49,6 @@ class PostsIndex extends Component
     {
         return view('livewire.posts-index', [
             'posts' => $this->postDAO->getAllPosts($this->search, $this->hasComments, $this->sortDirection)
-            // 'posts' => Post::when(strlen($this->search) >= 2, function($query){
-            //     return $query->where('title', 'like', '%'.$this->search.'%');
-            // })
-            // ->when($this->hasComments, function($query) {
-            //     return $query->whereHas('comments', function($query) {
-            //         $query->where('id', '>', 0);
-            //     });
-            // })
-            // ->orderBy('created_at', $this->sortDirection)
-            // ->paginate(5)
         ]);
     }
 }

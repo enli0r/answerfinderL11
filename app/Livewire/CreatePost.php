@@ -29,12 +29,6 @@ class CreatePost extends Component
             $this->validate();
             $this->postDAO->createPost($this->title, $this->description, auth()->user()->id);
 
-            // Post::create([
-            //     'user_id' => auth()->user()->id,
-            //     'title' => $this->title,
-            //     'description' => $this->description
-            // ]);
-
         }else{
             abort(Response::HTTP_FORBIDDEN);
         }

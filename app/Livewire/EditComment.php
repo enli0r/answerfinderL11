@@ -31,12 +31,7 @@ class EditComment extends Component
         $this->validate();
 
         $this->commentDAO->updateComment($this->comment, $this->body);
-
-
-        // $this->comment->update([
-        //     'body' => $this->body
-        // ]);
-
+        
         $this->dispatch('commentedited', 'Comment was successfully updated!');
     }
 

@@ -28,10 +28,6 @@ class EditPost extends Component
         $this->validate();
 
         $this->postDAO->updatePost($this->post, $this->title, $this->description);
-        // $this->post->update([
-        //     'title' => $this->title,
-        //     'description' => $this->description
-        // ]);
 
         $this->dispatch('postedited', 'Post was successfully updated!');
     }
